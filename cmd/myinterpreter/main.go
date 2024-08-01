@@ -5,9 +5,9 @@ import (
 	"os"
 )
 
-const (
-	LEFT_PAREN  rune = '('
-	RIGHT_PAREN rune = ')'
+var (
+	hasError        = false
+	hasRuntimeError = false
 )
 
 func main() {
@@ -30,14 +30,29 @@ func main() {
 		os.Exit(1)
 	}
 
-	// TODO: Actually add the tokens somewhere.
-	for _, c := range string(fileContents) {
-		switch c {
-		case LEFT_PAREN:
-			fmt.Printf("LEFT_PAREN %c null\n", LEFT_PAREN)
-		case RIGHT_PAREN:
-			fmt.Printf("RIGHT_PAREN %c null\n", RIGHT_PAREN)
+	source := string(fileContents)
+	scanner := Scanner{source: source, tokens: []Token{}, start: 0, current: 0, line: 1}
+	tokens := scanner.scanTokens()
+
+	print(tokens)
+	if hasError {
+		os.Exit(65)
+	}
+}
+
+func print(tokens []Token) {
+	for _, token := range tokens {
+		if token.Literal == nil {
+			fmt.Printf("%s %s %s\n", tokenNames[token.Type], token.Lexeme, "null")
 		}
 	}
-	fmt.Println("EOF  null")
+}
+
+func error(line int, message string) {
+	report(line, "", message)
+}
+
+func report(line int, where string, message string) {
+	fmt.Fprintf(os.Stderr, "[line %d] Error%s: %s\n", line, where, message)
+	hasError = true
 }

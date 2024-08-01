@@ -102,6 +102,8 @@ func (s *Scanner) scanToken() {
 		} else {
 			s.addToken(SLASH)
 		}
+	case ' ', '\r', '\t':
+		// Whitespace is ignored
 	case '\n':
 		s.line++
 	default:

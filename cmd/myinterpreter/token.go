@@ -14,6 +14,7 @@ const (
 	MINUS
 	PLUS
 	SEMICOLON
+	SLASH
 	STAR
 
 	BANG
@@ -38,6 +39,7 @@ var tokenNames = map[TokenType]string{
 	MINUS:       "MINUS",
 	PLUS:        "PLUS",
 	SEMICOLON:   "SEMICOLON",
+	SLASH:       "SLASH",
 	STAR:        "STAR",
 
 	BANG:          "BANG",

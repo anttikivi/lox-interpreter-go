@@ -9,6 +9,12 @@ const (
 	RIGHT_PAREN
 	LEFT_BRACE
 	RIGHT_BRACE
+	COMMA
+	DOT
+	MINUS
+	PLUS
+	SEMICOLON
+	STAR
 
 	EOF
 )
@@ -18,6 +24,12 @@ var tokenNames = map[TokenType]string{
 	RIGHT_PAREN: "RIGHT_PAREN",
 	LEFT_BRACE:  "LEFT_BRACE",
 	RIGHT_BRACE: "RIGHT_BRACE",
+	COMMA:       "COMMA",
+	DOT:         "DOT",
+	MINUS:       "MINUS",
+	PLUS:        "PLUS",
+	SEMICOLON:   "SEMICOLON",
+	STAR:        "STAR",
 
 	EOF: "EOF",
 }

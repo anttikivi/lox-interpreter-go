@@ -47,6 +47,22 @@ func (s *Scanner) peek() byte {
 	return s.source[s.current]
 }
 
+func (s *Scanner) string() {
+	for s.peek() != '"' && !s.isAtEnd() {
+		if s.peek() == '\n' {
+			s.line++
+		}
+		s.advance()
+	}
+	if s.isAtEnd() {
+		error(s.line, "Unterminated string.")
+		return
+	}
+	s.advance()
+	value := s.source[s.start+1 : s.current-1]
+	s.addTokenLiteral(STRING, value)
+}
+
 func (s *Scanner) scanToken() {
 	c := s.advance()
 	switch c {
@@ -106,6 +122,8 @@ func (s *Scanner) scanToken() {
 		// Whitespace is ignored
 	case '\n':
 		s.line++
+	case '"':
+		s.string()
 	default:
 		error(s.line, fmt.Sprintf("Unexpected character: %c", c))
 	}

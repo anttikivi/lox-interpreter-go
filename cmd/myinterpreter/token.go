@@ -26,6 +26,8 @@ const (
 	LESS
 	LESS_EQUAL
 
+	STRING
+
 	EOF
 )
 
@@ -50,6 +52,8 @@ var tokenNames = map[TokenType]string{
 	GREATER_EQUAL: "GREATER_EQUAL",
 	LESS:          "LESS",
 	LESS_EQUAL:    "LESS_EQUAL",
+
+	STRING: "STRING",
 
 	EOF: "EOF",
 }

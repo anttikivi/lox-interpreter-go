@@ -16,6 +16,9 @@ const (
 	SEMICOLON
 	STAR
 
+	EQUAL
+	EQUAL_EQUAL
+
 	EOF
 )
 
@@ -30,6 +33,9 @@ var tokenNames = map[TokenType]string{
 	PLUS:        "PLUS",
 	SEMICOLON:   "SEMICOLON",
 	STAR:        "STAR",
+
+	EQUAL:       "EQUAL",
+	EQUAL_EQUAL: "EQUAL_EQUAL",
 
 	EOF: "EOF",
 }

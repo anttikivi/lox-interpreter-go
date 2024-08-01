@@ -29,6 +29,17 @@ func (s *Scanner) isAtEnd() bool {
 	return s.current >= len(s.source)
 }
 
+func (s *Scanner) match(expected byte) bool {
+	if s.isAtEnd() {
+		return false
+	}
+	if s.source[s.current] != expected {
+		return false
+	}
+	s.current++
+	return true
+}
+
 func (s *Scanner) scanToken() {
 	c := s.advance()
 	switch c {
@@ -52,6 +63,12 @@ func (s *Scanner) scanToken() {
 		s.addToken(SEMICOLON)
 	case '*':
 		s.addToken(STAR)
+	case '=':
+		if s.match('=') {
+			s.addToken(EQUAL_EQUAL)
+		} else {
+			s.addToken(EQUAL)
+		}
 	case '\n':
 		s.line++
 	default:

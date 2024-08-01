@@ -26,8 +26,26 @@ const (
 	LESS
 	LESS_EQUAL
 
+	IDENTIFIER
 	STRING
 	NUMBER
+
+	AND
+	CLASS
+	ELSE
+	FALSE
+	FUN
+	FOR
+	IF
+	NIL
+	OR
+	PRINT
+	RETURN
+	SUPER
+	THIS
+	TRUE
+	VAR
+	WHILE
 
 	EOF
 )
@@ -54,8 +72,26 @@ var tokenNames = map[TokenType]string{
 	LESS:          "LESS",
 	LESS_EQUAL:    "LESS_EQUAL",
 
-	STRING: "STRING",
-	NUMBER: "NUMBER",
+	IDENTIFIER: "IDENTIFIER",
+	STRING:     "STRING",
+	NUMBER:     "NUMBER",
+
+	AND:    "AND",
+	CLASS:  "CLASS",
+	ELSE:   "ELSE",
+	FALSE:  "FALSE",
+	FUN:    "FUN",
+	FOR:    "FOR",
+	IF:     "IF",
+	NIL:    "NIL",
+	OR:     "OR",
+	PRINT:  "PRINT",
+	RETURN: "RETURN",
+	SUPER:  "SUPER",
+	THIS:   "THIS",
+	TRUE:   "TRUE",
+	VAR:    "VAR",
+	WHILE:  "WHILE",
 
 	EOF: "EOF",
 }

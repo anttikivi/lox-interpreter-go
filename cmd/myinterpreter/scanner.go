@@ -63,6 +63,12 @@ func (s *Scanner) scanToken() {
 		s.addToken(SEMICOLON)
 	case '*':
 		s.addToken(STAR)
+	case '!':
+		if s.match('=') {
+			s.addToken(BANG_EQUAL)
+		} else {
+			s.addToken(BANG)
+		}
 	case '=':
 		if s.match('=') {
 			s.addToken(EQUAL_EQUAL)
